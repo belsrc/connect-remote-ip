@@ -1,5 +1,5 @@
 ## Connect Remote IP
-__[IN DEVELOPMENT]__
+__IN DEVELOPMENT__ *(until I write tests)*
 
 Attempts to get the remote IP address using various headers or the connection object. The IP is added to the request object under the `remoteIP` property, if no IP is found this will be null.
 
