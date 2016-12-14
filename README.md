@@ -20,6 +20,8 @@ app.use(remoteIp);
 app.use(function(request, response, next) {
   var str = (request.remoteIP || 'IP N/A') + ' - ' + request.method + ' ' + request.originalUrl;
   console.log(str);
+
+  return next();
 });
 ```
 
