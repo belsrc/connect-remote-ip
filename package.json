@@ -1,6 +1,6 @@
 {
   "name": "connect-remote-ip",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gets the connect request origin IP address.",
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha --reporter spec --ui tdd --recursive tests"
