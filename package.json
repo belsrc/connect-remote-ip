@@ -1,0 +1,42 @@
+{
+  "name": "connect-remote-ip",
+  "version": "0.1.0",
+  "description": "Gets the connect request remote origin IP address.",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --reporter spec --ui tdd --recursive tests",
+  },
+  "author": "Bryan Kizer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belsrc/connect-remote-ip.git"
+  },
+  "keywords": [
+    "remote ip",
+    "request ip",
+    "client ip",
+    "ip",
+    "address",
+    "request",
+    "client",
+    "remote",
+    "x-client-ip",
+    "x-forwarded-for",
+    "x-real-ip",
+    "cf-connecting-ip",
+    "x-cluster-client-ip",
+    "fastly-ssl",
+    "z-forwarded-for",
+    "x-forwarded",
+    "forwarded-for",
+    "forwarded",
+    "z-scaler"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/belsrc/connect-remote-ip/issues"
+  },
+  "homepage": "https://github.com/belsrc/connect-remote-ip#readme",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {}
+}
