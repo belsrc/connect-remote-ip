@@ -33,13 +33,19 @@ module.exports = function(request, response, next) {
     request.headers['x-real-ip'],
 
     // Cloudflare
+    // https://support.cloudflare.com/hc/en-us/articles/200170986-How-does-Cloudflare-handle-HTTP-Request-headers-
     request.headers['cf-connecting-ip'],
 
-    // Rackspace, Riverbed
+    // Rackspace (old, uses x-forwarded-for now), Riverbed
+    // https://serverfault.com/questions/409155/x-real-ip-header-empty-with-nginx-behind-a-load-balancer#answer-409159
     request.headers['x-cluster-client-ip'],
 
-    // fastly
+    // fastly (old, seem to use x-forwarded-for now)
     request.headers['fastly-ssl'],
+
+    // AKAMAI
+    // https://community.akamai.com/thread/4612-can-i-get-client-ip-from-this-header-httpcontextcurrentrequestheaderstrue-client-ip
+    request.headers['true-client-ip'],
 
     // Zscaler
     request.headers['z-forwarded-for'],
@@ -63,9 +69,16 @@ module.exports = function(request, response, next) {
     return next();
   }
 
-  remoteIPs = remoteIPs.split(',');
+  var ip = remoteIPs.split(',')[0];
 
-  request.remoteIP = remoteIPs[0].trim();
+  // Apparently Azure Gateway (thanks MS) tacks on port number to the forwarded IP [address:port]
+  // https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-faq
+  // Q: Does Application Gateway support x-forwarded-for headers?
+  if(~ip.indexOf(':')) {
+    ip = ip.split(':')[0];
+  }
+
+  request.remoteIP = ip.trim();
 
   return next();
 };
